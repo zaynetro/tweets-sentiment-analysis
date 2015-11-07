@@ -55,7 +55,7 @@ func getTweets(sinceId int64) []anaconda.Tweet {
 	api := anaconda.NewTwitterApi(config.Twitter.AccessToken, config.Twitter.AccessTokenSecret)
 
 	v := url.Values{}
-	v.Set("count", "30")
+	v.Set("count", "2")
 	if sinceId != 0 {
 		v.Set("since_id", strconv.FormatInt(sinceId, 10))
 	}
