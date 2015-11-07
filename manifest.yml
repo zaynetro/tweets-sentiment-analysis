@@ -1,0 +1,9 @@
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: eu-gb.mybluemix.net
+  name: tweets-sentiment-analysis
+  host: tweets-sentiment-analysis
+  disk_quota: 1024M
+  buildpack: go_buildpack
