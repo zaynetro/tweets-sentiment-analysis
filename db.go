@@ -9,7 +9,7 @@ import (
 )
 
 func sendToDb(tweet AnalysedTweet) {
-	dbUrl := config.Db.Url + "tweets/"
+	dbUrl := config.Db.Url + "/tweets/"
 
 	json, err := json.Marshal(tweet)
 	if err != nil {
