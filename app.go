@@ -2,21 +2,34 @@ package main
 
 import (
 	"log"
+	"net/http"
 	"net/url"
+	"os"
 	"strconv"
 	"time"
 
-	"github.com/zaynetro/tweets-sentiment-analysis/Godeps/_workspace/src/github.com/ChimeraCoder/anaconda"
+	"github.com/ChimeraCoder/anaconda"
 )
 
 const (
-	UPDATE_MIN = 1
+	UPDATE_MIN   = 1
+	DEFAULT_PORT = "8080"
 )
 
 var config = Config{}
 
 func main() {
 	parseConfig()
+
+	var port string
+	if port = os.Getenv("PORT"); len(port) == 0 {
+		port = DEFAULT_PORT
+	}
+
+	http.HandleFunc("/", helloworld)
+
+	log.Printf("Starting app on port %+v\n", port)
+	http.ListenAndServe(":"+port, nil)
 
 	ticker := time.NewTicker(UPDATE_MIN * time.Minute)
 
@@ -68,4 +81,8 @@ func getTweets(sinceId int64) []anaconda.Tweet {
 	log.Printf("Fetched %d tweets\n", len(tweets))
 
 	return tweets
+}
+
+func helloworld(w http.ResponseWriter, req *http.Request) {
+	w.Write([]byte("Hello"))
 }
