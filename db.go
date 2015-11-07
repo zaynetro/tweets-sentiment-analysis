@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	//"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -33,6 +33,6 @@ func sendToDb(tweet AnalysedTweet) {
 	}
 	defer res.Body.Close()
 
-	body, _ := ioutil.ReadAll(res.Body)
-	log.Printf("DB: %s\n", body)
+	//body, _ := ioutil.ReadAll(res.Body)
+	//log.Printf("DB: %s", body)
 }

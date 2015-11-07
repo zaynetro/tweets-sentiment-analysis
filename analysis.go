@@ -18,6 +18,7 @@ type AnalysisResult struct {
 }
 
 type AnalysedTweet struct {
+	TweetId   int64     `json:"tweetId"`
 	Text      string    `json:"text"`
 	Lang      string    `json:"lang"`
 	User      TweetUser `json:"user"`
@@ -47,7 +48,7 @@ type AlchemySentiment struct {
 	Sentiment AlchemySentimentScore `json:"docSentiment"`
 }
 
-func analyseTweets(tweets []anaconda.Tweet) {
+func analyseTweets(tweets []anaconda.Tweet) []AnalysedTweet {
 	var processed []AnalysedTweet
 	for _, tweet := range tweets {
 		//log.Printf("Analyse lang: %s and tweet: %s\n", tweet.Lang, tweet.Text)
@@ -57,12 +58,7 @@ func analyseTweets(tweets []anaconda.Tweet) {
 		}
 	}
 
-	log.Println("Processed")
-	for _, tweet := range processed {
-		log.Printf("%v\n\n", tweet)
-		sendToDb(tweet)
-	}
-	//log.Printf("Processed: %v\n", processed)
+	return processed
 }
 
 func analyseTweet(tweet anaconda.Tweet) AnalysisResult {
@@ -115,8 +111,9 @@ func analyseTweet(tweet anaconda.Tweet) AnalysisResult {
 
 	return AnalysisResult{
 		AnalysedTweet: AnalysedTweet{
-			Text: tweet.Text,
-			Lang: tweet.Lang,
+			TweetId: tweet.Id,
+			Text:    tweet.Text,
+			Lang:    tweet.Lang,
 			User: TweetUser{
 				Id:             tweet.User.Id,
 				Name:           tweet.User.Name,
