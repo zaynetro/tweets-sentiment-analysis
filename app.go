@@ -33,7 +33,7 @@ func main() {
 
 	ticker := time.NewTicker(UPDATE_MIN * time.Minute)
 
-	lastId := int64(663074549127356416)
+	lastId := int64(663311327566368768)
 	for _ = range ticker.C {
 		log.Printf("Start processing tweets since: %d\n", lastId)
 		lastId = processTweets(lastId)
@@ -68,7 +68,7 @@ func getTweets(sinceId int64) []anaconda.Tweet {
 	api := anaconda.NewTwitterApi(config.Twitter.AccessToken, config.Twitter.AccessTokenSecret)
 
 	v := url.Values{}
-	v.Set("count", "2")
+	v.Set("count", "5")
 	if sinceId != 0 {
 		v.Set("since_id", strconv.FormatInt(sinceId, 10))
 	}
