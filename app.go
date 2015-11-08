@@ -42,7 +42,7 @@ func main() {
 }
 
 func processTweets(sinceId int64) int64 {
-	var lastId int64
+	lastId := sinceId
 	tweets := getTweets(sinceId)
 	if l := len(tweets); l > 0 {
 		lastId = tweets[0].Id
