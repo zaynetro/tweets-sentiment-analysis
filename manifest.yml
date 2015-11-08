@@ -4,7 +4,7 @@ applications:
   instances: 1
   domain: mybluemix.net
   name: tweets-sentiment-analysis
-  host: tweets-sentiment-analysis
+  host: tweets-analysis
   disk_quota: 1024M
   command: tweets-sentiment-analysis
   buildpack: https://github.com/cloudfoundry/go-buildpack.git
