@@ -29,7 +29,7 @@ func main() {
 	http.HandleFunc("/", helloworld)
 
 	log.Printf("Starting app on port %+v\n", port)
-	http.ListenAndServe(":"+port, nil)
+	go http.ListenAndServe(":"+port, nil)
 
 	ticker := time.NewTicker(UPDATE_MIN * time.Minute)
 
