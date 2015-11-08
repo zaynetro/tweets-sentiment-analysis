@@ -1,1 +1,1 @@
-web: tweets-sentiment-analysis
+worker: tweets-sentiment-analysis
