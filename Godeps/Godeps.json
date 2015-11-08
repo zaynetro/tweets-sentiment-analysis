@@ -1,10 +1,5 @@
 {
 	"ImportPath": "github.com/zaynetro/tweets-sentiment-analysis",
-	"GoVersion": "go1.3.1",
-	"Deps": [
-		{
-			"ImportPath": "github.com/ChimeraCoder/anaconda",
-			"Rev": "4b2bf11c3f29812ce4507e50d43864e90f0499aa"
-		}
-	]
+	"GoVersion": "go1.3.3",
+	"Deps": []
 }
