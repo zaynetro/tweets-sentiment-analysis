@@ -6,4 +6,5 @@ applications:
   name: tweets-sentiment-analysis
   host: tweets-sentiment
   disk_quota: 1024M
-  buildpack: go_buildpack
+  command: tweets-sentiment-analysis
+  buildpack: https://github.com/cloudfoundry/go-buildpack.git
